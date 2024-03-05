@@ -1,0 +1,44 @@
+<h4>Listado de personajes</h4>
+<ul class="list-group">
+    <!-- Lista de caracteres -->
+    <li 
+        *ngFor="
+            let character of characterList; 
+            let i = index;
+            let isFirts = first;
+            let isLast = last
+        "
+        class="list-group-item d-flex justify-content-between aling-item-center"
+        [ngClass]="
+        { 
+            'list-group-item-info': isLast,
+            'list-group-item-primary': isFirts
+        }">
+
+        <div>
+            <!-- Numero de elemento -->
+            <span class="text-primary">
+                {{ i + 1 }}.
+            </span>
+    
+            <!-- Nombre del caracter -->
+            <span>
+                {{ character.name }} -
+            </span>
+    
+            <!-- Caracteristica del caracter -->
+            <strong>
+                Power: 
+            </strong>
+    
+            <!-- Valor de la caracteristica -->
+            <span>
+                {{ character.power }}
+            </span>
+        </div>
+
+        <span class="btn btn-danger" (click)="emitirIndex(i)">
+            X
+        </span>
+    </li>
+</ul>
